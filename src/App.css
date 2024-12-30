@@ -1,0 +1,12 @@
+:root {
+    --color-background: #17a494;
+    --color-white: #fffeff;
+    --color-black: #000e13;
+    --color-extracted: #f68da1;
+    --color-extract: #f7a201;
+    --color-end-game: #864364;
+}
+
+h1 {
+    color: var(--color-white);
+}

@@ -4,7 +4,7 @@ function Header() {
     return (
         <header>
 
-            <h1 className="text-center p-5 ">
+            <h1 className="text-center p-5">
                 Tombola
             </h1>
 

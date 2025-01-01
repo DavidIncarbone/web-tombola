@@ -1,8 +1,18 @@
+import { useState, useEffect } from "react";
 import Number from "./Number";
-import numeri from "../data/numbers.js"
+import numeri from "../data/numbers.js";
+import ExtractButton from "./ExtractButton.jsx";
 
 
 function Main() {
+
+    const [extractedNumber, setExtractedNumber] = useState();
+
+
+
+    function extractor(max) {
+        setExtractedNumber(Math.floor(Math.random() * max + 1));
+    }
 
     return (
         <main>
@@ -13,10 +23,12 @@ function Main() {
                 </div>
                 <div className="w-25">
                     <h5 className="text-center">Ultimo numero estratto</h5>
-                    <div id="result"></div>
+                    <div id="result" className="d-flex justify-content-center align-items-center">
+                        <b>{extractedNumber}</b>
+                    </div>
                     <hr />
                     <div className="d-flex flex-column justify-content-center align-items-center gap-2">
-                        <button id="estrai" className="px-3">Estrai</button>
+                        <ExtractButton extractor={() => extractor(90)} />
                         <button id="termina-gioco" className="px-3">Termina gioco</button>
                     </div>
                 </div>

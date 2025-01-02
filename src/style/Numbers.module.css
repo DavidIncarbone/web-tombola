@@ -1,3 +1,7 @@
 .extracted {
     background-color: var(--color-extracted);
 }
+
+.starter {
+    background-color: var(--color-white);
+}

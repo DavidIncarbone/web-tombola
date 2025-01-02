@@ -9,10 +9,12 @@ import EndButton from "./EndButton.jsx";
 function Main() {
     const [numbersCopy, setNumbersCopy] = useState(numeri);
     const [extracted, setExtracted] = useState(null);
+    const [extractedArray, setExtractedArray] = useState([]);
     function extractor() {
         if (numbersCopy.length > 0) {
             const number = Math.floor(Math.random() * numbersCopy.length);
             const extractedNumber = numbersCopy[number];
+            setExtractedArray([...extractedArray, extractedNumber])
             setExtracted(extractedNumber)
             setNumbersCopy(numbersCopy.filter((numero) => numero !== extractedNumber))
         } else {
@@ -24,13 +26,17 @@ function Main() {
     function endGame() {
         setExtracted(null);
         setNumbersCopy(numeri);
+        setExtractedArray([]);
     }
 
     return (
         <main>
             <div className="container w-75 d-flex justify-content-center">
                 <div className="row d-flex g-2 w-50">
-                    {numeri.map((numero) => <Number key={crypto.randomUUID()} number={numero} />)}
+                    {/* {numeri.map((numero) => <Number key={crypto.randomUUID()} number={numero} className="bg-primary" />)} */}
+                    {numeri.map((numero) => <div key={crypto.randomUUID()} id="number" className={`m-1 ${extractedArray.includes(numero) ? numbersStyle.extracted : numbersStyle.starter}`}>
+                        <b>{numero}</b>
+                    </div>)}
 
                 </div>
                 <div className="w-25">
@@ -42,7 +48,7 @@ function Main() {
                     <div className="d-flex flex-column justify-content-center align-items-center gap-2">
                         <ExtractButton extractor={() => {
                             extractor()
-                            setTimeout(console.log(numbersCopy), 1000)
+                            setTimeout(console.log(extractedArray), 1000)
                         }} />
                         <EndButton reset={() => endGame()} />
                     </div>
@@ -52,7 +58,7 @@ function Main() {
 
 
 
-        </main>
+        </main >
     )
 }
 

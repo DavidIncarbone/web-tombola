@@ -19,7 +19,8 @@ function Main() {
             setNumbersCopy(numbersCopy.filter((numero) => numero !== extractedNumber))
         } else {
 
-            alert("Tutti i numeri sono stati estratti!")
+            alert("Tutti i numeri sono stati estratti!");
+            endGame();
         }
     }
 
@@ -33,7 +34,7 @@ function Main() {
         <main>
             <div className="container w-75 d-flex justify-content-center">
                 <div className="row d-flex g-2 w-50">
-                    {/* {numeri.map((numero) => <Number key={crypto.randomUUID()} number={numero} className="bg-primary" />)} */}
+
                     {numeri.map((numero) => <div key={crypto.randomUUID()} id="number" className={`m-1 ${extractedArray.includes(numero) ? numbersStyle.extracted : numbersStyle.starter}`}>
                         <b>{numero}</b>
                     </div>)}
